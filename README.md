@@ -6,3 +6,6 @@
 ![image](https://user-images.githubusercontent.com/9838749/124378863-56b19700-dce6-11eb-9739-ae577a6963c5.png)
 2. 通过书签引入 axios, qs;
 3. 在控制台中执行 `top10.js`
+
+# 预览
+![image](https://user-images.githubusercontent.com/9838749/124378908-a42e0400-dce6-11eb-81bc-c50ee1719749.png)
