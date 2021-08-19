@@ -1,6 +1,6 @@
 const urlContainsPid = document.querySelector('a[href*=mq]').href
 const re = /pid=(.+)&/
-const pid = decodeURIComponent(re.exec(urlContainsPid))
+const pid = decodeURIComponent(re.exec(urlContainsPid)[1])
 
 
 let query = `{"dimensions":["rpc"],"metric":"appstat.incall","measures":["rt","count","error"],"intervalMillis":2147483647,"startTime":1624723200000,"endTime":1625414401000,"filters":{"regionId":"cn-shanghai","pid":"${pid}"}}`
