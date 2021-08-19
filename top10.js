@@ -1,4 +1,9 @@
-let query = '{"dimensions":["rpc"],"metric":"appstat.incall","measures":["rt","count","error"],"intervalMillis":2147483647,"startTime":1624723200000,"endTime":1625414401000,"filters":{"regionId":"cn-shanghai","pid":"i6n5b651u8@efc1781653be3ae"}}'
+const urlContainsPid = document.querySelector('a[href*=mq]').href
+const re = /pid=(.+)&/
+const pid = decodeURIComponent(re.exec(urlContainsPid))
+
+
+let query = `{"dimensions":["rpc"],"metric":"appstat.incall","measures":["rt","count","error"],"intervalMillis":2147483647,"startTime":1624723200000,"endTime":1625414401000,"filters":{"regionId":"cn-shanghai","pid":"${pid}"}}`
 let ret = await axios.post('https://arms.console.aliyun.com/api/trace.json?action=TraceAction&eventSubmitDoGetDatas=1&source=nil', Qs.stringify({'query':query}))
 let data = ret.data.data.data
 let top10 = data.sort((a,b) => b.count - a.count)
