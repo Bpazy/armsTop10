@@ -1,12 +1,12 @@
-const urlContainsPid = document.querySelector('a[href*=mq]').href
-const re = /pid=(.+)&/
-const pid = decodeURIComponent(re.exec(urlContainsPid)[1])
+var urlContainsPid = document.querySelector('a[href*=mq]').href
+var re = /pid=(.+)&/
+var pid = decodeURIComponent(re.exec(urlContainsPid)[1])
 
 
-let query = `{"dimensions":["rpc"],"metric":"appstat.incall","measures":["rt","count","error"],"intervalMillis":2147483647,"startTime":1624723200000,"endTime":1625414401000,"filters":{"regionId":"cn-shanghai","pid":"${pid}"}}`
-let ret = await axios.post('https://arms.console.aliyun.com/api/trace.json?action=TraceAction&eventSubmitDoGetDatas=1&source=nil', Qs.stringify({'query':query}))
-let data = ret.data.data.data
-let top10 = data.sort((a,b) => b.count - a.count)
+var query = `{"dimensions":["rpc"],"metric":"appstat.incall","measures":["rt","count","error"],"intervalMillis":2147483647,"startTime":1624723200000,"endTime":1625414401000,"filters":{"regionId":"cn-shanghai","pid":"${pid}"}}`
+var ret = await axios.post('https://arms.console.aliyun.com/api/trace.json?action=TraceAction&eventSubmitDoGetDatas=1&source=nil', Qs.stringify({'query':query}))
+var data = ret.data.data.data
+var top10 = data.sort((a,b) => b.count - a.count)
                     .filter(a => a.rpc.indexOf('health.json') === -1)
                     .slice(0,10)
 console.table(top10.map(i => {
