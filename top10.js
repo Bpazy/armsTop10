@@ -1,5 +1,5 @@
 var urlContainsPid = document.querySelector('a[href*=mq]').href
-var re = /pid=(.+)&/
+var re = /#\/(.+@.+)\//
 var pid = decodeURIComponent(re.exec(urlContainsPid)[1])
 
 
