@@ -1,5 +1,5 @@
-var startTime = 1629004644000
-var endTime = 1629610344000
+var startTime = new Date('2021-10-08 00:00:00').getTime()
+var endTime = new Date('2021-10-15 00:00:00').getTime()
 
 var urlContainsPid = document.querySelector('a[href*=mq]').href
 var re = /#\/(.+@.+)\//
